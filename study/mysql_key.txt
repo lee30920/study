@@ -1,7 +1,0 @@
-1. Key(Index)
-
-2. Primary Key
-
-3.Unique Key 
-
-4.Foreign Key
