@@ -1,0 +1,24 @@
+public - 클래스내, 클래스외의 어디에서라도 액세스 가능
+
+<?php
+
+$game = new Game();
+$game->genre = 'puzzle';
+$game->SelectGenre('action');
+
+class Game {
+  public $genre;
+  function SelectGenre($select) {
+    $this->genre = $select;
+  }
+}
+
+echo $game->genre;
+
+?>
+
+
+
+
+private - 같은 클래스 내에서만 액세스 가능
+protected - 같은 클래스 및 자식 클래스에서 액세스 가능
