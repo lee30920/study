@@ -1,0 +1,15 @@
+<?php
+$strQuery = "SELECT * FROM table";
+$result = mysql_query($strQuery);
+
+$array = array();
+
+while($row = mysql_fetch_array($result)) {
+  $array[$row['SEQ']][$row['CONTENT']];
+}
+?>
+
+<SCRIPT type="text/javascript">
+  var array = new Array(<?=$array?>);
+  alert('array[1]');
+</SCRIPT>
