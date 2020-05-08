@@ -10,6 +10,6 @@ while($row = mysql_fetch_array($result)) {
 ?>
 
 <SCRIPT type="text/javascript">
-  var array = new Array(<?=$array?>);
-  alert('array[1]');
+  var array = <?php echo json_encode($content)?>;
+  alert(array[1]);
 </SCRIPT>
