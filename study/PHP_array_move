@@ -5,7 +5,7 @@ $result = mysql_query($strQuery);
 $array = array();
 
 while($row = mysql_fetch_array($result)) {
-  $array[$row['SEQ']][$row['CONTENT']];
+  $array[$row['SEQ']] = $row['CONTENT'];
 }
 ?>
 
