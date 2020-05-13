@@ -1,0 +1,11 @@
+설치
+yum install firewalld
+systemctl start firewalld
+systemctl enable firewalld
+
+
+재가동 (새로고침)
+firewall-cmd --reload
+
+리스트 출력
+firewall-cmd --get-zones 
