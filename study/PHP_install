@@ -1,0 +1,48 @@
+1. php 설치
+	- apt-get install libapache2-mod-php7.2 php7.2 php7.2-curl php7.2-mysql php7.2-mbstring php7.2-gd php7.2-xml 
+	- ubuntu nginx 연동
+		- apt-get install php7.3-fpm composer
+
+2. php 설정
+	- vim /etc/php/7.2/apache2/php.ini
+	- (아래 내용 변경)
+
+		short_open_tag = On 변경
+		date.timezone = Asia/Seoul 변경
+
+3. php 보안 설정
+	- vim /etc/php/7.2/apache2/php.ini
+	- disable_functions = exec,system,shell_exec,passthru
+	- register_globals = Off
+	- expose_php = Off
+	- magic_quotes_gpc = On
+
+[nginx php 연동]
+	- vim /etc/php/7.2/fpm/pool.d/www.conf
+		www-data -> nginx 변경
+		
+	- /etc/php/7.2/fpm/php.ini
+		short_open_tag = On 변경
+		date.timezone = Asia/Seoul 변경
+		session.gc_maxlifetime = 43200
+		
+	- service php7.2-fpm restart
+
+[swoole 설치]
+	- apt-get install php7.2-dev
+	- cd /usr/bin/
+	- ./pecl install swoole
+	- cd /etc/php/7.2/fpm/
+	- vim php.ini
+		extension=swoole.so
+	- service php7.2-fpm restart
+	- cd /etc/php/7.2/mods-available/
+	- vim swoole.ini
+		; configuration for php xml module
+		; priority=20
+		extension=swoole.so
+		
+	- cd /etc/php/7.2/cli/conf.d
+	- ln -s /etc/php/7.2/mods-available/swoole.ini 20-swoole.ini
+	- cd /etc/php/7.2/fpm/conf.d
+	- ln -s /etc/php/7.2/mods-available/swoole.ini 20-swoole.ini
